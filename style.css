@@ -1,4 +1,5 @@
 /* nejsme vcerejsi, pouzivame moderni box model */
+
 *, :after, :before { box-sizing: border-box; }
 
 /*
@@ -6,7 +7,6 @@
  pozadi     #f5f5f5
  Jedeme retro cernobile, dnes barvy nepotrebujeme.
 */
-
 
 body {
     margin: 0;
@@ -16,28 +16,396 @@ body {
     font-size: 16px;
     line-height: 1.6;
 }
-
-
 /* HLAVICKA */
+.hlavicka {
+    margin: 0;
+    padding: 3px;
+    color: #f5f5f5;
+    background-image: url(images/island-hlavicka.jpg);
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 350px;
+}
 
 .titulek {
     font-family: 'Raleway', serif;
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
+.perex {
+    color: white;
+    font-size: 15px;
+    padding-bottom: 13px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    width: 85%;
+}
+
+.autor {
+    color: white;
+    size: 14px;
+    font-style: italic;
+    margin: auto;
+    text-align: center;
+}
 
 /* MENU */
 
+.menu {
+    text-align: center;
+    align-items: center;
+    padding: 15px;
+    color: silver;
+    font-variant-caps: all-small-caps;
+  }
 
+ul {
+    list-style-type: none;
+}
 
+li a {
+    text-decoration: none;
+    color: gray;
+}
+
+.menu a:hover {
+    background-color: black;
+}
 
 /* OBSAH */
+.Obsah {
+    background-color: #f5f5f5;
+    position: relative;
+    text-align: left;
+    }
+
+h2, p {
+    padding-left: 12px;
+}
 
 
+img {
+    width: 100%; 
+    height: 100px;
+    }
 
+.popisek_obsah {
+    text-align: center;
+    color: lightgray;
+    font-size: 12px;
+    position: relative;
+    bottom: 20px;
+    }
+
+.h2 {
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    background-color: rgb(40, 40, 223);
+    position: absolute;
+    left: -3px;
+}
 
 /* FOTOGALERIE */
 
+.Fotogalerie {
+    padding-top: 5%;
+    background-color: #f5f5f5;
+    font-size: smaller;
+    position: relative;
+    }
 
+.foto {
+    height: 250px;
+    padding-bottom: 0px;
+   }
 
+img {
+    height: 250px;
+    top: 0;
+    left: 0;
+}
+
+.popisek {
+    text-align: center;
+    padding-bottom: 20px;
+    }
 
 /* PATICKA */
+
+.paticka {
+    border: 1px solid lightgray;
+    vertical-align: top;
+    width: 1000px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    font-size: 12px;
+    background-color: lightgray;
+    /*background: linear-gradient(to bottom, gray 1%, lightgray 99%);*/
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2);
+  }
+
+a {
+    color: gray;
+}
+
+/******MEDIA QUERY PRO TABLET******/
+@media screen and (min-width: 540px) {
+
+/*Uvod*/
+   img {
+    position: relative;
+    height: 350px;      
+   }
+
+    .popisek_obsah {
+    position: absolute;
+    bottom: 40px;
+    right: 70px;
+    text-align: center;
+}
+
+/*Hlavicka*/
+
+   .hlavicka {
+        color: white;
+        height: 330px;
+        /*opacity: 0.60;*/
+        filter: brightness(65%);
+   }
+
+   .hlavicka h1 {
+    font-size: 50px;
+}
+
+   .perex {
+      text-align: center;
+        align-items: center;
+        justify-content: center;
+         }
+
+   .autor {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+          }
+
+   /*Obsah*/
+    .Obsah {
+        padding: 20px 0 20px 0;
+        background-color: #f5f5f5;
+        color: black;
+    }
+
+   .menu {
+        color: gray;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+         }
+
+    ul li {
+        border: 1px solid lightgray;
+        flex: 0 1 calc(100% / 4);
+        }
+
+ /*Obsah - fotky s popisky vpravo dole*/
+        .Uvod,
+        .Proc,
+        .Musite {
+            position: relative;
+        }
+
+        .popisek_obsah {
+            position: absolute;
+            right: 10px;
+            bottom: -20px;
+        }
+
+    /*Galerie*/
+    .galerie {
+        display: flex;
+        flex-wrap: wrap;}
+
+    .foto_box {
+        /*display: flex;*/
+        flex: 0 1 calc(100% / 2);
+        position: relative;
+        overflow: hidden;
+    }
+
+   /*transform translate nefunguje*/
+
+   .foto_box img {
+        width: 100%;
+        display: block; 
+        transition: transform 0.3s; }
+
+    .popisek {
+           position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        width: 100%;
+        transition: transform 0.3s;
+    }
+
+    .foto_box:hover .popisek {
+        transform: translateY(-150%); /*kopiruje vysku elementu*/
+    }
+
+    .foto_box:hover img  {
+        transform: scale(1.2); /*zvetseni*/
+    }
+}
+
+/*MEDIA QUERY PRO PC POCITAC*/
+
+@media screen and (min-width: 1024px) {
+
+/*Hlavicka*/
+.hlavicka {
+    height: 400px;
+}
+
+.hlavicka h1 {
+    font-size: 60px;
+}
+
+.perex {
+    padding: 0px 200px 0 200px;
+    text-align: center;
+    align-items: center;
+}
+
+.autor {
+    text-align: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/*Obsah*/
+
+.Obsah {
+        border: 1px solid lightgray;
+        /*margin: -60px 100px 0 100px;  */    
+        width: 1000px;
+        margin: auto; 
+    }
+
+/*Uvod*/
+
+   .hlavni_menu {
+        display: flex;            
+    }
+
+    .menu_odkazy {
+       /* display: flex;*/
+        flex: 1 0 20%;  
+       /* align-items: left; */
+    }
+
+    .menu {
+        flex-direction: column;
+        /*align-content: left;*/
+        justify-content: center;
+    }
+
+    ul li {
+       flex: 0 1 calc(100% / 4);
+       border-top: 1px solid lightgray;
+       border-bottom: 1px solid lightgrey;
+       padding-bottom: 15px;
+    }
+
+    li  {
+        width: 100%;
+        text-align: left;
+        border-bottom: 5px solid #c2d6d4; /*nefunguje*/
+    }
+
+/*Uvod*/
+    .Uvod {
+        padding: 20px 20px 0 50px;
+    }
+
+    img {
+       position: relative;
+        width: 100%;
+    }
+
+    .popisek_obsah {
+        position: absolute;
+        color: white;
+        bottom: 20px;
+        right: 10px;
+    }
+
+    a {
+        color: rgb(238, 231, 238);
+    }
+
+    .povidani_proc {
+        padding-right: 250px;
+    }
+
+    .povidani_musite {
+        padding-left: 200px;
+    }
+
+.Skodyr {
+    padding-left: 200px;
+}
+
+/*Galerie*/
+    .galerie {
+        display: flex;
+        flex-wrap: wrap; 
+    }  
+
+    .foto_box  {
+        flex: 0 1 calc(100%/ 3);
+        position: relative;
+        overflow: hidden;
+        /*border: 3px dotted red; */
+    }
+
+    .foto_box img {
+        width: 100%;
+        display: block; /*zmizi ucari*/
+        transition: transform 0.3s; /*obrazek se zvetsuje*/
+    }
+
+    .popisek {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        color: white;
+        width: 100%;
+        transition: transform 0.3s;
+     }
+
+    .foto_box:hover .popisek {
+        transform: translateY(-120%); /*kopiruje vysku elementu*/
+    }
+
+    .foto_box:hover img  {
+        transform: scale(1.2); /*zvetseni*/
+    }
+}
